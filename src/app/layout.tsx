@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { OpenPanel } from "../components/OpenPanel";
+import { MainLayout } from "../layouts/MainLayout";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,9 +27,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased relactive`}
       >
-        {children}
+        <OpenPanel />
+
+        <MainLayout>{children}</MainLayout>
+
+        <div id="portal"></div>
       </body>
     </html>
   );
