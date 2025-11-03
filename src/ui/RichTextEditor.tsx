@@ -14,9 +14,10 @@ export function RichTextEditor() {
     <div
       ref={editorRef}
       contentEditable
-      onMouseUp={() => mobxFormatText.saveSelection()}
-      onKeyUp={() => mobxFormatText.saveSelection()}
-      className="w-full min-h-20 bg-emerald-100/20 rounded-2xl outline-none focus:border-emerald-300 p-4 resize-none"
+      onMouseUp={() => {
+        mobxFormatText.saveSelection();
+      }}
+      className="w-full min-h-screen bg-emerald-100/20 border-2 border-emerald-100/40 rounded-2xl outline-none p-4 resize-none"
     ></div>
   );
 }

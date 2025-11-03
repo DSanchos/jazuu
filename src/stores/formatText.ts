@@ -199,7 +199,6 @@ class FormatTextStore {
     if (width) img.width = width;
     if (height) img.height = height;
     img.className = "max-w-full rounded";
-
     range.insertNode(img);
 
     const newRange = document.createRange();
@@ -210,16 +209,31 @@ class FormatTextStore {
     sel.addRange(newRange);
   };
 
-  handleFileUpload = (file: File) => {
+  imageUpload = (file: File, width?: number, height?: number) => {
     this.restoreSelection();
     this.editor?.focus();
 
     const reader = new FileReader();
     reader.onload = (e) => {
       const url = e.target?.result as string;
-      mobxFormatText.insertImage(url);
+      mobxFormatText.insertImage(url, width, height);
     };
     reader.readAsDataURL(file);
+  };
+
+  downloadFile = () => {
+    if (!this.editor) return;
+
+    const content = this.editor.innerHTML;
+    const blob = new Blob([content], { type: "text/html" });
+    const url = URL.createObjectURL(blob);
+
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "editor-content.html";
+    link.click();
+
+    URL.revokeObjectURL(url);
   };
 }
 

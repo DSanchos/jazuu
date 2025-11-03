@@ -6,6 +6,7 @@ import {
   TextAlignCenter,
   TextAlignEnd,
   TextAlignJustify,
+  Save,
 } from "lucide-react";
 import { Bold, Italic, Underline, Strikethrough } from "lucide-react";
 import {
@@ -14,21 +15,29 @@ import {
   ListCollapse,
   DiamondMinus,
   Link,
+  Image,
 } from "lucide-react";
 import { Button } from "../ui/Button";
 import { DropdownMenu } from "../ui/DropdownMenu";
 import { mobxFormatText } from "../stores/formatText";
 import { useState } from "react";
 import { ModalImageUrl } from "./modals/ModalImageUrl";
+import { ModalImageUpload } from "./modals/ModalImageUpload";
 
 export function TextToolz() {
   const [isOpenUrlImage, setIsOpenUrlImage] = useState<boolean>(false);
+  const [isOpenUploadImage, setIsOpenUploadImage] = useState<boolean>(false);
 
   return (
-    <div className="max-w-4xl ml-auto mr-auto w-full flex items-center gap-6 bg-emerald-400/30 p-4 rounded-4xl sticky top-3">
-      <Button onClick={() => mobxFormatText.resetFormat()}>
-        <RotateCcw size={24} />
-      </Button>
+    <div className="max-w-4xl ml-auto mr-auto w-full flex items-center gap-6 bg-emerald-400/50 p-4 rounded-4xl sticky top-3">
+      <div className="flex gap-2.5">
+        <Button onClick={() => mobxFormatText.resetFormat()}>
+          <RotateCcw size={24} />
+        </Button>
+        <Button onClick={() => mobxFormatText.downloadFile()}>
+          <Save size={24} />
+        </Button>
+      </div>
 
       <div className="flex gap-2.5">
         <Button onClick={() => mobxFormatText.setTextAlign("left")}>
@@ -91,12 +100,21 @@ export function TextToolz() {
         <Button onClick={() => setIsOpenUrlImage(true)}>
           <Link size={24} />
         </Button>
+        <Button onClick={() => setIsOpenUploadImage(true)}>
+          <Image size={24} />
+        </Button>
       </div>
 
       <ModalImageUrl
         isOpen={isOpenUrlImage}
         setOpen={setIsOpenUrlImage}
         onInsert={mobxFormatText.insertImage}
+      />
+
+      <ModalImageUpload
+        isOpen={isOpenUploadImage}
+        setOpen={setIsOpenUploadImage}
+        onUpload={mobxFormatText.imageUpload}
       />
     </div>
   );

@@ -1,6 +1,3 @@
-"use client";
-
-import { PortalLayout } from "@/src/layouts/PortalLayout";
 import { Modal } from "@/src/ui/Modal";
 import { useState } from "react";
 

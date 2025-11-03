@@ -14,7 +14,7 @@ export const OpenPanel = observer(() => {
     >
       <nav
         className={clsx(
-          "bg-transparent backdrop-blur-md rounded-4xl border-white/10 border-3 px-3 py-3 ml-10 gap-6 transition-all duration-300 ease-in-out",
+          "bg-zinc-800/20 backdrop-blur-md rounded-4xl border-white/10 border-3 px-3 py-3 ml-10 gap-6 transition-all duration-300 ease-in-out",
           togglePanel.isPanel
             ? "opacity-100 translate-x-0 pointer-events-auto"
             : "opacity-0 translate-x-4 pointer-events-none"
@@ -22,19 +22,19 @@ export const OpenPanel = observer(() => {
       >
         <Link
           href={"/"}
-          className="transition-all duration-300 hover:text-blue-500"
+          className="transition-all duration-300 hover:text-emerald-800"
         >
           <House size={32} />
         </Link>
         <Link
           href={"/library"}
-          className="transition-all duration-300 hover:text-blue-500"
+          className="transition-all duration-300 hover:text-emerald-800"
         >
           <Library size={32} />
         </Link>
         <Link
           href={"/list"}
-          className="transition-all duration-300 hover:text-blue-500"
+          className="transition-all duration-300 hover:text-emerald-800"
         >
           <Scroll size={32} />
         </Link>
