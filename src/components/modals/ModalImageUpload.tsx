@@ -1,4 +1,3 @@
-import { mobxFormatText } from "@/src/stores/formatText";
 import { Button } from "@/src/ui/Button";
 import { Modal } from "@/src/ui/Modal";
 import { useState } from "react";

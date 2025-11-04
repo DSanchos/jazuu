@@ -105,6 +105,14 @@ export function TextToolz() {
         </Button>
       </div>
 
+      <div className="absolute top-3 right-5 flex gap-2.5 ml-auto font-bold text-4xl">
+        <h1 className="text-zinc-500 animate-bounce">J</h1>
+        <h1 className="text-zinc-600 animate-none">A</h1>
+        <h1 className="text-zinc-700 animate-ping">Z</h1>
+        <h1 className="text-zinc-800 animate-pulse">U</h1>
+        <h1 className="text-zinc-900 animate-spin">U</h1>
+      </div>
+
       <ModalImageUrl
         isOpen={isOpenUrlImage}
         setOpen={setIsOpenUrlImage}
